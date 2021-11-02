@@ -17,10 +17,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
     }
 
     @IBAction func signinButton(_ sender: Any) {
-        performSegue(withIdentifier: "toFeedVC", sender: nil)
+        
+        if emailText.text != "" && passwordText.text != "" {
+            Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!) { authdata, error in
+                if error != nil {
+                    self.Alert(titleInput: "Error!", messageInput: error?.localizedDescription ?? "Error!")
+                }else{
+                    self.performSegue(withIdentifier: "toFeedVC", sender: nil)
+                }
+            }
+            
+        }else {
+            Alert(titleInput: "Error!", messageInput: "Plase enter your e-mail or password!")
+        }
+        
     }
     
     @IBAction func signupButton(_ sender: Any) {

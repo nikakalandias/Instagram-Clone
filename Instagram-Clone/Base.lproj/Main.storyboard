@@ -86,7 +86,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Kvc-8l-Qmy">
             <objects>
-                <tabBarController id="va6-dU-ZWa" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBar" id="va6-dU-ZWa" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Ud6-Tl-PdI"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9bM-yi-I6j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
