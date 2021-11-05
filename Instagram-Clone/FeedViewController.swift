@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
@@ -34,7 +35,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.mailLabel.text = mailArray[indexPath.row]
         cell.captionLabel.text = captionArray[indexPath.row]
         cell.likeLabel.text = String(likeArray[indexPath.row])
-        cell.imageCell.image = UIImage(named: "select")
+        cell.imageCell.sd_setImage(with: URL(string: self.imageArray[indexPath.row]))
         
         return cell
     }
@@ -48,6 +49,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Error!")
             }else {
                 if snapShot?.isEmpty == false {
+                    
+                    self.imageArray.removeAll(keepingCapacity: false)
+                    self.mailArray.removeAll(keepingCapacity: false)
+                    self.likeArray.removeAll(keepingCapacity: false)
+                    self.captionArray.removeAll(keepingCapacity: false)
+                    
+                    
                     
                     for document in snapShot!.documents {
                         let documentID = document.documentID
