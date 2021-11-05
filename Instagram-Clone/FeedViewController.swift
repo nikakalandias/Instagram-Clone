@@ -15,6 +15,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var captionArray = [String]()
     var imageArray = [String]()
     var likeArray = [Int]()
+    var documentID = [String]()
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -36,6 +37,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.captionLabel.text = captionArray[indexPath.row]
         cell.likeLabel.text = String(likeArray[indexPath.row])
         cell.imageCell.sd_setImage(with: URL(string: self.imageArray[indexPath.row]))
+        cell.documentID.text = documentID[indexPath.row]
         
         return cell
     }
@@ -44,7 +46,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let fireStoreData = Firestore.firestore()
         
-        fireStoreData.collection("Posts").addSnapshotListener { snapShot, error in
+        fireStoreData.collection("Posts").order(by: "date", descending: true).addSnapshotListener { snapShot, error in
             if error != nil {
                 print("Error!")
             }else {
@@ -54,11 +56,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.mailArray.removeAll(keepingCapacity: false)
                     self.likeArray.removeAll(keepingCapacity: false)
                     self.captionArray.removeAll(keepingCapacity: false)
+                    self.documentID.removeAll(keepingCapacity: false)
+                    
                     
                     
                     
                     for document in snapShot!.documents {
                         let documentID = document.documentID
+                        self.documentID.append(documentID)
                         
                         if let postedBy = document.get("postedBy") as? String {
                             self.mailArray.append(postedBy)
