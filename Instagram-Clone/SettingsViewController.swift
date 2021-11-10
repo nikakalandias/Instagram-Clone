@@ -9,11 +9,14 @@ import UIKit
 import Firebase
 
 class SettingsViewController: UIViewController {
-
+    
+    @IBOutlet weak var outlet: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        outlet.layer.cornerRadius = 15
+        outlet.layer.masksToBounds = true
     }
     
     @IBAction func logoutButton(_ sender: Any) {

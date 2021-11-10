@@ -19,6 +19,10 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate & 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buttonOutlet.layer.cornerRadius = 15
+        buttonOutlet.layer.masksToBounds = true
+        buttonOutlet.isEnabled = false
+        
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapRecognizer)
                                          
@@ -47,6 +51,7 @@ class UploadViewController: UIViewController, UIImagePickerControllerDelegate & 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imageView.image = info[.editedImage] as? UIImage
+        buttonOutlet.isEnabled = true
         self.dismiss(animated: true, completion: nil)
     }
     

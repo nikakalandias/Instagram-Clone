@@ -92,7 +92,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="logoutButton:" destination="czK-4D-pFs" eventType="touchUpInside" id="bld-Qb-l4h"/>
+                                    <action selector="logoutButton:" destination="czK-4D-pFs" eventType="touchUpInside" id="nlS-aB-kZF"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="toViewController" id="9UH-dG-CdU"/>
                                 </connections>
                             </button>
@@ -109,6 +109,9 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="GIX-7Q-ipL">
                         <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="outlet" destination="ga8-Dt-dgv" id="LBT-Qe-RHB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0dc-FJ-rTE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,6 +225,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buttonlike" destination="CxC-Gh-Pby" id="EUi-WI-ly5"/>
                                             <outlet property="captionLabel" destination="nXP-zn-yFR" id="bnd-gA-nas"/>
                                             <outlet property="documentID" destination="zj8-5D-W49" id="sBB-Ve-WxI"/>
                                             <outlet property="imageCell" destination="FUY-VC-HW5" id="0MI-UA-2fq"/>
@@ -349,6 +353,8 @@
                     <connections>
                         <outlet property="emailText" destination="d3A-Ie-69R" id="b7r-91-H9U"/>
                         <outlet property="passwordText" destination="Bai-OW-YMD" id="xiy-Sl-Rk1"/>
+                        <outlet property="signInoutlet" destination="vlD-rG-usK" id="XGW-4f-XPC"/>
+                        <outlet property="signupOutlet" destination="xSL-JA-ad4" id="IeY-2w-uls"/>
                         <segue destination="va6-dU-ZWa" kind="presentation" identifier="toFeedVC" modalPresentationStyle="fullScreen" id="oq1-S0-r9j"/>
                     </connections>
                 </viewController>

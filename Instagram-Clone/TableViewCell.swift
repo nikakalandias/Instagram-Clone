@@ -17,10 +17,18 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     
     @IBOutlet weak var documentID: UILabel!
+    @IBOutlet weak var buttonlike: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        imageCell.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
+        tap.numberOfTapsRequired = 2
+        imageCell.addGestureRecognizer(tap)
+        
+        buttonlike.layer.cornerRadius = 15
+        buttonlike.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,6 +46,17 @@ class TableViewCell: UITableViewCell {
             firestoreData.collection("Posts").document(documentID.text!).setData(likeStore, merge: true)
         }
         
+    }
+    
+    @objc func doubleTap() {
+        let firestoreData = Firestore.firestore()
+        
+        if let likeCount = Int(likeLabel.text!) {
+            
+            let likeStore = ["likes" : likeCount + 1] as [String : Any]
+            
+            firestoreData.collection("Posts").document(documentID.text!).setData(likeStore, merge: true)
+        }
     }
     
 }

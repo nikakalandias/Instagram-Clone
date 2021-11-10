@@ -13,10 +13,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText:
         UITextField!
+    @IBOutlet weak var signInoutlet: UIButton!
+    
+    @IBOutlet weak var signupOutlet: UIButton!
+    
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
+        signupOutlet.layer.cornerRadius = 15
+        signupOutlet.layer.masksToBounds = true
+        
+        signInoutlet.layer.cornerRadius = 15
+        signInoutlet.layer.masksToBounds = true
 
         
     }
